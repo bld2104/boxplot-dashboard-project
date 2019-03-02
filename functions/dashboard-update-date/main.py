@@ -1,3 +1,7 @@
+import sys
+
+sys.path.append('packages')
+
 import json
 
 def handler(event, context):
