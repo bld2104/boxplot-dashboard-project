@@ -3,14 +3,9 @@
   "description": "All lambdas of Boxplot project",
   "memory": 256,
   "timeout": 120,
-  "retainedVersions": 100,
+  "retainedVersions": 40,
   "role": "arn:aws:iam::548271326349:role/boxplot_lambda_function",
   "environment": {},
   "runtime": "python3.6",
-  "handler": "main.handler",
-  "hooks": {
-    "build": "pip install --trusted-host pypi.python.org --target packages -r requirements.txt",
-    "clean": "rm -fr packages"
-  },
-  "profile": "sf"
+  "handler": "main.handler"
 }

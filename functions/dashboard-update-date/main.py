@@ -6,16 +6,23 @@ import requests
 import json
 
 def handler(event, context):
-  script_path = "https://s3.amazonaws.com/homerise-dev/development/uploads/project/photos/92/initial_data_retrieval_twitter.py"
+  statusCode = 204
+  body = ""
 
-  response = requests.get(script_path, allow_redirects=True)
+  if event["queryStringParameters"] and event["queryStringParameters"]["script"]:
+    try:
+      response = requests.get(event["queryStringParameters"]["script"], allow_redirects=True)
 
-  # if status_code == 200
-  exec(response.content)
-  # else
-    # print("error !!")
+      exec(response.content)
+    except Exception as e:
+      statusCode = 500
+      body = {"error": str(e)}
+  else:
+    statusCode = 400
+    body = {"error": "Script parameter can't be empty"}
+
 
   return {
-    "statusCode": 200,
-    "body": json.dumps("It is over! Or Error")
+    "statusCode": statusCode,
+    "body": json.dumps(body)
   }
