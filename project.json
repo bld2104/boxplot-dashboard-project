@@ -4,7 +4,7 @@
   "memory": 256,
   "timeout": 120,
   "retainedVersions": 40,
-  "role": "arn:aws:iam::548271326349:role/boxplot_lambda_function",
+  "role": "arn:aws:iam::********:role/boxplot_lambda_function",
   "environment": {},
   "runtime": "python3.6",
   "handler": "main.handler"
